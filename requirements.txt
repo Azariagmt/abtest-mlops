@@ -1,0 +1,4 @@
+setuptools
+sklearn
+matplotlib
+pandas
