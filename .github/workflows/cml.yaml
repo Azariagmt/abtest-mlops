@@ -3,17 +3,19 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: iterative/setup-cml@v1
       - name: Train model
         env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 
         run: |
           pip install -r requirements.txt
-          dvc pull data --run-cache
+          dvc pull data/AdSmartABdata.csv --run-cache
           dvc repro
 
           python plot.py
