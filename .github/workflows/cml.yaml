@@ -15,6 +15,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           # dvc pull data --run-cache
+          dvc pull data/AdSmartABdata.csv --run-cache
           cd train
           python decision_trees.py
           cat train/metrics.txt >> report.md
