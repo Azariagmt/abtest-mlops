@@ -112,4 +112,10 @@ if __name__ == '__main__':
     print(acc)
     mlflow.log_param('acc',acc)
     clf.get_depth()
+    with open("metrics.txt", 'w') as outfile:
+            outfile.write("Accuracy: " + str(acc) + "\n")
 
+
+    # Plot it
+    disp = plot_confusion_matrix(clf, X_test, y_test, normalize='true',cmap=plt.cm.Blues)
+    plt.savefig('confusion_matrix.png')
