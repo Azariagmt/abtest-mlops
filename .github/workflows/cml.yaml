@@ -17,7 +17,7 @@ jobs:
           dvc pull data/AdSmartABdata.csv --run-cache
 
           python plot.py
-          cat metrics.txt >> report.md
+          cat train/metrics.txt >> report.md
 
 
           # # Report metrics
@@ -26,5 +26,5 @@ jobs:
           # dvc metrics diff master --show-md >> report.md
 
           # cat metrics.txt >> report.md
-          # cml-publish confusion_matrix.png --md >> report.md
+          cml-publish train/confusion_matrix.png --md >> report.md
           cml-send-comment report.md
