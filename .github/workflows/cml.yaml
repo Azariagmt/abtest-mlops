@@ -14,9 +14,10 @@ jobs:
 
         run: |
           pip install -r requirements.txt
+          # dvc pull data --run-cache
           dvc pull data/AdSmartABdata.csv --run-cache
-
-          python plot.py
+          cd train
+          python decision_trees.py
           cat metrics.txt >> report.md
 
 
@@ -26,5 +27,5 @@ jobs:
           # dvc metrics diff master --show-md >> report.md
 
           # cat metrics.txt >> report.md
-          # cml-publish confusion_matrix.png --md >> report.md
+          cml-publish confusion_matrix.png --md >> report.md
           cml-send-comment report.md
