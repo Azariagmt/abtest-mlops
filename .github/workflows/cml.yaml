@@ -14,6 +14,7 @@ jobs:
 
         run: |
           pip install -r requirements.txt
+          dvc pull data --run-cache
           cd train
           python decision_trees.py
           cat train/metrics.txt >> report.md
