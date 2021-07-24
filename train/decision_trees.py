@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 import dvc.api 
 
 path = 'data/AdSmartABdata.csv'
-repo = "../"
+repo = "/"
 version = "'v2'"
 
 data_url = dvc.api.get_url(
