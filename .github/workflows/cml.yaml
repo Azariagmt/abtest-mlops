@@ -18,14 +18,14 @@ jobs:
           dvc pull data/AdSmartABdata.csv --run-cache
           cd train
           python decision_trees.py
-          cat metrics.txt >> report.md
-
-
-          # # Report metrics
-          # echo "## Metrics" >> report.md
-          # git fetch --prune
-          # dvc metrics diff master --show-md >> report.md
-
-          # cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md >> report.md
+          echo "## Decision Tree Metrics" >> report.md  
+          cat dt_metrics.txt >> report.md
+          cml-publish dt_confusion_matrix.png --md >> report.md
+          
+          python xgb.py
+          echo "## XGBClassifier Metrics" >> report.md  
+          cat xgb_metrics.txt >> report.md
+          cml-publish xgb_confusion_matrix.png --md >> report.md
+          
+          
           cml-send-comment report.md
