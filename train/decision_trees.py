@@ -26,12 +26,12 @@ logger = logging.getLogger(__name__)
 
 path = 'data/AdSmartABdata.csv'
 repo = "../"
-version = 'v2'
+version = "fae650c01c6e0f6eea08898e15da1dc703572729"
 
 data_url = dvc.api.get_url(
     path=path,
     repo=repo,
-    rev=version
+    rev=version,
 )
 
 mlflow.set_experiment('Decision Trees experiment')
