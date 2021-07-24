@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 path = 'data/AdSmartABdata.csv'
 repo = "https://github.com/Azariagmt/abtest-mlops/"
-version = "'v2'"
+version = "v2"
 
 data_url = dvc.api.get_url(
     path=path,
