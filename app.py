@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from werkzeug.exceptions import Forbidden, HTTPException, NotFound, RequestTimeout, Unauthorized
+import os
 app = Flask(__name__)
 
 @app.route('/')
@@ -27,4 +28,6 @@ def request_timeout_handler(e: HTTPException):
 
 if __name__ == '__main__':
     os.environ.setdefault('Flask_SETTINGS_MODULE', 'helloworld.settings')
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True)
